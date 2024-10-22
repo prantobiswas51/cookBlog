@@ -13,15 +13,15 @@
                     {{ __('Blog') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                <x-nav-link href="{{ route('posts.index') }}">
                     {{ __('About') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                <x-nav-link href="{{ route('posts.index') }}">
                     {{ __('Contact') }}
                 </x-nav-link>
 
-                <x-nav-link href="{{ route('posts.index') }}" :active="request()->routeIs('posts.index')">
+                <x-nav-link href="{{ route('posts.index') }}">
                     {{ __('Privacy Policy') }}
                 </x-nav-link>
 

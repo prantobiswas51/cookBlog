@@ -11,19 +11,20 @@ use Livewire\WithPagination;
 
 class PostList extends Component
 {
-    public $search = "";
-
     use WithPagination;
 
-    #[Computed()]
-    public function posts()
-    {
-        return Post::published()->orderBy('published_at', 'desc')->paginate(5);
-    }
+    #[Url()]
+    public $sort = 'desc';
 
-    public function render()
+    #[Url()]
+    public $search = '';
+
+    #[Url()]
+    public $category = '';
+
+    public function setSort($sort)
     {
-        return view('livewire.post-list');
+        $this->sort = ($sort === 'desc') ? 'desc' : 'asc';
     }
 
     #[On('search')]
@@ -31,4 +32,23 @@ class PostList extends Component
     {
         $this->search = $search;
     }
+
+    #[Computed()]
+    public function posts()
+    {
+        return Post::published()
+        ->orderBy('published_at', $this->sort)
+        ->whereHas('categories', function($query){
+            $query->where('slug', $this->category);
+        })
+        ->where('title','like',"%{$this->search}%")
+        ->paginate(3);
+    }
+
+    public function render()
+    {
+        return view('livewire.post-list');
+    }
+
+
 }

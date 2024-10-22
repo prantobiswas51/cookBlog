@@ -1,19 +1,18 @@
 @props(['post'])
 
 <article class="[&:not(:last-child)]:border-b border-gray-100 pb-10">
-    <div
-        class="article-body border p-2 rounded-md  grid grid-cols-12 gap-3 mt-5 items-start">
+    <div class="article-body border p-2 rounded-md  grid grid-cols-12 gap-3 mt-5 items-start">
         <div class="article-thumbnail col-span-4 flex items-center">
             <a href="">
-                <img class="mw-100 mx-auto rounded-xl" src="" alt="thumbnail">
+                <img class="mw-100 mx-auto rounded-xl" src="{{ asset('storage/'.$post->image) }}" alt="thumbnail">
             </a>
         </div>
 
         <div class="col-span-8">
             <div class="article-meta flex py-1 text-sm items-center">
-                <img class="w-7 h-7 rounded-full mr-3" src="" alt="avatar">
-                <span class="mr-1 text-xs dark:text-gray-400">{{ $post->author->name }} </span>
-                <span class=" text-xs dark:text-gray-400">{{$post->published_at}}</span>
+                <img class="w-7 h-7 rounded-full mr-3" src="{{$post->author->profile_photo_url}}" alt="avatar">
+                <span class="mr-1 text-xs dark:text-gray-400">{{ $post->author->name }} ||||| </span>
+                <span class=" text-xs dark:text-gray-400">{{ $post->published_at->diffForHumans() }}</span>
             </div>
             <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">
                 <a href="{{ $post->image }}">
