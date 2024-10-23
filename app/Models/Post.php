@@ -64,7 +64,10 @@ class Post extends Model
     public function getThumbnailUrl()
     {
         $isUrl = str_contains($this->image, 'http');
-
         return ($isUrl) ? $this->image : Storage::disk('public')->url($this->image);
+    }
+
+    public function likes() {
+        return $this->belongsToMany(User::class, 'post_like');
     }
 }

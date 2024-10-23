@@ -77,8 +77,7 @@
                 </div>
             </div>
             <a class="mt-10 block text-center text-lg text-yellow-500 font-semibold"
-                href="http://127.0.0.1:8000/blog">More
-                Posts</a>
+                href="http://127.0.0.1:8000/blog">More Posts</a>
         </div>
     </main>
 
