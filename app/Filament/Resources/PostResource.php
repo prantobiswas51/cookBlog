@@ -64,6 +64,7 @@ class PostResource extends Resource
                 ImageColumn::make('image'),
                 TextColumn::make('title')->sortable()->searchable(),
                 TextColumn::make('published_at')->sortable()->searchable(),
+                TextColumn::make('featured'),
                 TextColumn::make('author.name')->sortable()->searchable(),
             ])
             ->filters([

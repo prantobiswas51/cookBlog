@@ -24,17 +24,15 @@
                                 <a href="http://127.0.0.1:8000/blog/laravel-34">
                                     <div>
                                         <img class="w-full rounded-xl"
-                                            src="http://127.0.0.1:8000/storage/3i5uKG05UnvhbORZ3ieDkvtAOL8ss5-metaZXAxNSAoMjIpLnBuZw==-.png">
+                                            src="{{$post->getThumbnailUrl()}}" alt="thumbnail">
                                     </div>
                                 </a>
                                 <div class="mt-3">
                                     <div class="flex items-center mb-2">
-                                        <a href="http://127.0.0.1:8000/categories/laravel" class="bg-red-600
-                                            text-white
-                                            rounded-xl px-3 py-1 text-sm mr-3">
-                                            Laravel
-                                        </a>
-                                        <p class="dark:text-gray-50 text-gray-900 text-sm">2023-09-05</p>
+                                        @foreach ($post->categories as $category)
+                                            <x-badge :textColor="$category->text_color" :bgColor="$category->bg_color">{{$category->title}}</x-badge>
+                                        @endforeach
+                                        <p class="dark:text-gray-50 text-gray-900 text-sm">{{$post->published_at->diffForHumans()}}</p>
                                     </div>
                                     <a class="text-xl font-bold dark:text-gray-50 text-gray-900">{{ $post->title }}</a>
                                 </div>
@@ -56,25 +54,24 @@
                 <div class="grid grid-cols-3 gap-10 gap-y-32 w-full">
 
                     @foreach ($latestPosts as $latestPost)
-                        <div class="border rounded-md md:col-span-1 col-span-3">
-                            <a href="http://127.0.0.1:8000/blog/laravel-34">
-                                <div>
-                                    <img class="w-full rounded-xl"
-                                        src="http://127.0.0.1:8000/storage/3i5uKG05UnvhbORZ3ieDkvtAOL8ss5-metaZXAxNSAoMjIpLnBuZw==-.png">
-                                </div>
-                            </a>
-                            <div class="mt-3"><a href="http://127.0.0.1:8000/blog/laravel-34">
-                                </a>
-                                <div class="flex items-center mb-2"><a href="http://127.0.0.1:8000/blog/laravel-34">
-                                    </a><a href="http://127.0.0.1:8000/categories/laravel" class="bg-red-600
-                                            text-white
-                                            rounded-xl px-3 py-1 text-sm mr-3">
-                                        Laravel</a>
-                                    <p class="text-gray-500 text-sm">2023-09-05</p>
-                                </div>
-                                <h3 class="text-xl font-bold dark:text-gray-50 text-gray-900">{{ $latestPost->title }}</h3>
+                    <div class="border rounded-md md:col-span-1 col-span-3">
+                        <a href="http://127.0.0.1:8000/blog/laravel-34">
+                            <div>
+                                <img class="w-full rounded-xl"
+                                    src="{{$latestPost->getThumbnailUrl()}}" alt="thumbnail">
                             </div>
+                        </a>
+                        <div class="mt-3">
+                            <div class="flex items-center mb-2">
+                                @foreach ($latestPost->categories as $category)
+                                    <x-badge :textColor="$category->text_color" :bgColor="$category->bg_color">{{$category->title}}</x-badge>
+                                @endforeach
+                                <p class="dark:text-gray-50 text-gray-900 text-sm">{{$latestPost->published_at->diffForHumans()}}</p>
+                            </div>
+                            <a class="text-xl font-bold dark:text-gray-50 text-gray-900">{{ $latestPost->title }}</a>
                         </div>
+
+                    </div>
                     @endforeach
 
                 </div>
