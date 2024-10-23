@@ -3,7 +3,7 @@
 <article class=" border-gray-100 pb-10">
     <div class="article-body border p-2 rounded-md  grid grid-cols-12 gap-3 mt-5 items-start">
         <div class="article-thumbnail col-span-4 flex items-center">
-            <a href="">
+            <a href="{{ route('posts.show', $post->slug) }}">
                 <img class="mw-100 mx-auto rounded-xl" src="{{ $post->getThumbnailUrl() }}" alt="thumbnail">
             </a>
         </div>
@@ -15,7 +15,7 @@
                 <span class=" text-xs dark:text-gray-400">{{ $post->published_at->diffForHumans() }}</span>
             </div>
             <h2 class="text-xl font-bold text-gray-900 dark:text-gray-100">
-                <a href="{{ $post->image }}">
+                <a href="{{ route('posts.show', $post->slug) }}">
                     {{$post->title}}
                 </a>
             </h2>

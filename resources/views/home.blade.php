@@ -55,7 +55,7 @@
 
                     @foreach ($latestPosts as $latestPost)
                     <div class="border rounded-md md:col-span-1 col-span-3">
-                        <a href="http://127.0.0.1:8000/blog/laravel-34">
+                        <a href="{{ route('posts.show', $post->slug) }}">
                             <div>
                                 <img class="w-full rounded-xl"
                                     src="{{$latestPost->getThumbnailUrl()}}" alt="thumbnail">
