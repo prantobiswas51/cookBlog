@@ -25,9 +25,6 @@
                     {{ __('Privacy Policy') }}
                 </x-nav-link>
 
-
-
-
             </ul>
         </div>
     </div>
@@ -36,11 +33,11 @@
         @guest
             <div class="flex space-x-5">
                 <a class="flex space-x-2 items-center hover:text-yellow-500 text-sm text-gray-500"
-                    href="http://127.0.0.1:8000/login">
+                    href="{{ route('login') }}">
                     Login
                 </a>
                 <a class="flex space-x-2 items-center hover:text-yellow-500 text-sm text-gray-500"
-                    href="http://127.0.0.1:8000/register">
+                    href="{{ route('register') }}">
                     Register
                 </a>
             </div>
@@ -77,6 +74,12 @@
                     <x-dropdown-link href="{{ route('profile.show') }}">
                         {{ __('Profile') }}
                     </x-dropdown-link>
+
+                    @if (auth()->user()->isAdmin() || auth()->user()->isEditor())
+                        <x-dropdown-link href="{{ route('filament.admin.pages.dashboard') }}">
+                            {{ __('Admin Panel') }}
+                        </x-dropdown-link>
+                    @endif
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-dropdown-link href="{{ route('api-tokens.index') }}">

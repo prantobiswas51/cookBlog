@@ -54,6 +54,12 @@ class PostResource extends Resource
                         Select::make('cetegories')->relationship('categories','title')->searchable()->required()->multiple()
                     ]
                 ),
+
+                Section::make('Comments')->schema(
+                    [
+                        TextInput::make('comment')
+                    ]
+                ),
             ]);
     }
 

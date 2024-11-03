@@ -35,8 +35,16 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
     public function scopePublished($query){
         $query->where('published_at', '<=', Carbon::now());
+    }
+
+    public function scopePopular($query){
+        $query->withCount('likes')->orderBy("likes_count",'desc');
     }
 
     public function scopeWithCategory($query, string $category){
@@ -47,6 +55,10 @@ class Post extends Model
 
     public function scopeFeatured($query){
         $query->where('featured', true);
+    }
+
+    public function scopeSearch($query, $search = ''){
+        $query->where('title','like',"%{$search}%");
     }
 
     public function readTime()
