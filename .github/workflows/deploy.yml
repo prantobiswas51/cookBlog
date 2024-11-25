@@ -85,7 +85,7 @@ jobs:
             if [ ! -f .env ]; then
               cp .env.example .env
             fi
-            git pull origin dev
+            git pull origin main
             composer install --no-dev --no-interaction --prefer-dist --optimize-autoloader
             php artisan clear-compiled
             php artisan optimize
