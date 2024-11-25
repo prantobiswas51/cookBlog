@@ -10,7 +10,7 @@
             </div>
 
             <div class="mb-4 text-sm text-gray-600 dark:text-gray-400" x-cloak x-show="recovery">
-                {{ __('Please confirm access to your account by entering one of your emergency recovery codes.') }}
+                {{ __('Please confirm access to your account by entering one of your emergency recovery codes..') }}
             </div>
 
             <x-validation-errors class="mb-4" />
