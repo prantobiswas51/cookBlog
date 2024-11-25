@@ -42,8 +42,8 @@ jobs:
 
       - name: Migrate and Seed Database
         env:
-          DB_CONNECTION: mysql
-          DB_DATABASE: database/database.mysql
+          DB_CONNECTION: sqlite
+          DB_DATABASE: database/database.sqlite
         run: |
           php artisan migrate:fresh --seed
 
