@@ -1,12 +1,15 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
 Route::get('/blog', [PostController::class, 'index'])->name('posts.index');
 Route::get('/blog/{post:slug}', [PostController::class, 'show'])->name('posts.show');
+
+Route::get('/sendMail', [MailController::class, 'sendMail']);
 
 Route::middleware([
     'auth:sanctum',
